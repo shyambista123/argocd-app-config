@@ -1,0 +1,53 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: namespace-1
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kubernetes-demo-deployment
+  namespace: namespace-1
+  labels:
+    type: webapp
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      type: webapp
+  template:
+    metadata:
+      labels:
+        type: webapp
+    spec:
+      containers:
+        - name: webapp
+          image: kubernetes-demo:v1
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: "200m"
+            limits:
+              memory: "512Mi"
+              cpu: "300m"
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: kubernetes-demo-service
+  namespace: namespace-1
+spec:
+  selector:
+    type: webapp
+  ports:
+    - protocol: TCP
+      port: 80 # external port
+      targetPort: 8080 # container port
+  type: NodePort # ClusterIP / Loadbalancer
