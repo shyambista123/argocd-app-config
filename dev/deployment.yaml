@@ -25,7 +25,7 @@ spec:
       containers:
         - name: webapp
           image: shyambist/docker-demo-web:v1
-          imagePullPolicy: Never
+          # imagePullPolicy: Never
           ports:
             - containerPort: 8080
           resources:
