@@ -24,7 +24,7 @@ spec:
     spec:
       containers:
         - name: webapp
-          image: kubernetes-demo:v1
+          image: shyambist/docker-demo-web:v1
           imagePullPolicy: Never
           ports:
             - containerPort: 8080
