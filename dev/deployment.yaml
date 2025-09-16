@@ -13,7 +13,7 @@ metadata:
   labels:
     type: webapp
 spec:
-  replicas: 4
+  replicas: 1
   selector:
     matchLabels:
       type: webapp
