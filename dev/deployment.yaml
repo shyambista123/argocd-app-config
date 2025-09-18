@@ -24,7 +24,7 @@ spec:
     spec:
       containers:
         - name: webapp
-          image: shyambist/jenkins-demo:v1.1
+          image: shyambist/jenkins-demo:v1.1.25
           # imagePullPolicy: Never
           ports:
             - containerPort: 8080
